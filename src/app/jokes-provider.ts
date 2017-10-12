@@ -17,12 +17,14 @@ export class JokesProvider {
     }
 
     load() {
+        console.log("loading random Chuck Norris joke")
         return new Promise((resolve, reject) => {
             this.http
                 .get('https://api.icndb.com/jokes/random')
                 .map(res => res.json())
                 .subscribe(response => {
                     this.joke = response['value'];
+                    console.log("joke loading complete")
                     resolve(true);
                 })
         })
